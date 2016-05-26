@@ -26,12 +26,36 @@ public class GameAndUIScript : MonoBehaviour {
     //quiz
     bool[] quiz = new bool[9]; // note a or left is true, b or right is false
     string[] quizText= new string[9];
+    string[] TrueText = new string[9];
+    string[] FalseText = new string[9];
     public Text QuizText;
     public GameObject QuizBox;
     public Text quizTrue;
     public Text quizFalse;
     // Use this for initialization
     void Start () {
+        //1
+        quiz[0]
+        quizText[0]
+        quizTrue[0]
+        quizFalse[0]
+        //2
+
+        //3
+
+        //4
+
+        //5
+
+        //6
+
+        //7
+
+        //8
+
+        //9
+
+        //10
         for (int x = 0; x < 9; x++)
         {
             quiz[x] = true; //going for t/f quiz system atm

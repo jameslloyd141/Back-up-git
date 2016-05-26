@@ -4,29 +4,42 @@ using System.Collections.Generic;
 
 public class PathControl : MonoBehaviour
 {
+    //Create a public static PathControl called "control"
     public static PathControl control;
 
-    public Transform firstPath; 
-    public GameObject straightPath;
+    //Create a List of Transforms called "pathTransforms"
     public List<Transform> pathTransforms;
 
-    public int pathCount = 0;
+    //Create three public ints called "pathCount", "pathLimit", and "pathSpeed"
+    public int pathCount;
+    public int pathLimit;
+    public int pathSpeed;
+
+    public GameObject initialPath;
 
     void Awake()
     {
+        //control equals this script - Allows other scripts to access variables in this script
         control = this;
     }
 
     void Start()
     {
-        pathTransforms.Insert(pathCount, firstPath);
+        pathSpeed = 10;
+        Instantiate(initialPath, new Vector3(0, 0, -10), Quaternion.identity);
     }
 
-    void OnTriggerEnter(Collider other)
+    void Update()
     {
-        if(other.tag == "Player")
+        //If pathCount is greater than pathLimit...
+        if (pathCount > pathLimit)
         {
-            Instantiate(straightPath, new Vector3(0,0,40), Quaternion.identity);
+            //Destroy the GameObject in the first element of the List
+            Destroy(pathTransforms[0].gameObject);
+            //Remove the first element of the list - Prevents any empty elements being left over
+            pathTransforms.RemoveAt(0);
+            //The value of pathCount decrements by one
+            pathCount--;
         }
     }
 }
